@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="3D_template"
+config/name="FPS maze"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
