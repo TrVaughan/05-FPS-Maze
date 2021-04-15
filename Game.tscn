@@ -3,7 +3,7 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Exit/Exit.gd" type="Script" id=2]
 [ext_resource path="res://Key/KeyScene.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/Menu.gd" type="Script" id=4]
+[ext_resource path="res://UI/InputRemapMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemy/EnemyScene.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/New Hope.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Assets/567208__ddmyzik__announcement-sound.wav" type="AudioStream" id=7]
@@ -171,40 +171,15 @@ stream = ExtResource( 6 )
 volume_db = -20.371
 autoplay = true
 
+[node name="Robot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
 [node name="Key" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -12.921
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Menu" type="Control" parent="UI"]
+[node name="Menu" parent="UI" instance=ExtResource( 4 )]
 pause_mode = 2
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="ColorRect" parent="UI/Menu"]
-margin_right = 1024.0
-margin_bottom = 600.0
-color = Color( 0.00784314, 0.0156863, 0.101961, 0.886275 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Quit" type="Button" parent="UI/Menu"]
-margin_left = 462.0
-margin_top = 500.0
-margin_right = 562.0
-margin_bottom = 540.0
-text = "Quit game?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Robot" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
 [connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
-[connection signal="pressed" from="UI/Menu/Quit" to="UI/Menu" method="_on_Quit_pressed"]
